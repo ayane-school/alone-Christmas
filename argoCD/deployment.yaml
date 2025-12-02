@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: web
-          image: registry.uniproject.jp/ayane/alone-christmas:1.0.0
+          image: registry.uniproject.jp/ayane/alone-christmas:0.1.3
           ports:
             - containerPort: 3000
