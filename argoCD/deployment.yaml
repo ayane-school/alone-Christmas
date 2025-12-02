@@ -33,5 +33,5 @@ spec:
             - name: UPSTASH_REDIS_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: upstash_redis_token
+                  name: upstash-redis-token
                   key: redis-secret
