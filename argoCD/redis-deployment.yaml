@@ -22,14 +22,16 @@ spec:
           ports:
             - containerPort: 6379
           env:
-            - name: UPSTASH_REDIS_TOKEN
+            - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: redis-secret
                   key: upstash-redis-token
+          command:
+            - "/bin/sh"
+            - "-c"
           args:
-            - "--requirepass"
-            - "$(REDIS_PASSWORD)"
+            - 'redis-server --requirepass "$REDIS_PASSWORD"'
           volumeMounts:
             - name: data
               mountPath: /data
