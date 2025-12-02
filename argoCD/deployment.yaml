@@ -28,10 +28,10 @@ spec:
             - name: REDIS_PORT
               valueFrom:
                 secretKeyRef:
-                  name: REDIS_PORT
+                  name: redis-port
                   key: redis-secret
             - name: UPSTASH_REDIS_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: UPSTASH_REDIS_TOKEN
+                  name: upstash_redis_token
                   key: redis-secret
