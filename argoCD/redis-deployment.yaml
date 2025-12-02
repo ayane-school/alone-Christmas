@@ -25,8 +25,8 @@ spec:
             - name: UPSTASH_REDIS_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: upstash-redis-token
-                  key: redis-secret
+                  name: redis-secret
+                  key: upstash-redis-token
           args:
             - "--requirepass"
             - "$(REDIS_PASSWORD)"
