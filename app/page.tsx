@@ -1,12 +1,11 @@
 "use client";
 
+import React from "react";
 import { useEffect, useState } from "react";
 import { Inter, Noto_Sans_JP } from "next/font/google";
-import {BsSun, BsMoon, BsTwitterX} from "react-icons/bs"
-import React from 'react';// 追加
-import { Button } from '@/components/ui/button';
-import { Switch } from '@/components/ui/switch';
-import { useTheme } from 'next-themes';
+import { BsSun, BsMoon, BsTwitterX } from "react-icons/bs";
+import { Switch } from "@/components/ui/switch";
+import { useTheme } from "next-themes";
 const InterFont = Inter({
   weight: "400",
   subsets: ["latin"],
@@ -109,41 +108,47 @@ export default function Home() {
   const { theme, setTheme } = useTheme();
   return (
     <>
-    <div className="absolute top-6 right-6 flex flex-row gap-3">
-      <div className="flex items-center space-x-2">
-        <BsSun className="h-6 w-6" />
-        <Switch checked={theme === "dark"} onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")} /> {/* 追加 */}
-        <BsMoon className="h-6 w-6" />
-      </div>
-      <a href="https://twitter.com/intent/tweet?text=みんなでクリスマスを迎えよう&url=https%3A%2F%2Falone-christmas.me&hashtags=クリぼっちカウンター"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative inline-flex items-center justify-center w-12 h-12 bg-accent hover:bg-accent/90 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-        aria-label="クリスマスをツイッターで共有
-      ">
-        <BsTwitterX className="w-8 h-8 text-accent-foreground" />
-      </a>
-    </div>
-    <div
-      className={`min-h-screen flex items-center justify-center gap-16 ${InterFont.className}`}
-    >
-      <p className="text-3xl md:text-6xl w-[350px] md:w-[400px]">
-        {timeLeft.days}:{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
-      </p>
-      <div className="border-l border  h-36"></div>
-      <div>
-        <p
-          className={`text-xl md:text-3xl ${NotoSansJPFont.className} font-light`}
+      <div className="absolute top-4 right-4 flex flex-row gap-3 z-20">
+        <div className="flex items-center space-x-2">
+          <BsSun className="h-6 w-6" />
+          <Switch
+            checked={theme === "dark"}
+            onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+          />{" "}
+          {/* 追加 */}
+          <BsMoon className="h-6 w-6" />
+        </div>
+        <a
+          href="https://twitter.com/intent/tweet?text=みんなでクリスマスを迎えよう&url=https%3A%2F%2Falone-christmas.me&hashtags=クリぼっちカウンター"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative inline-flex items-center justify-center w-12 h-12 bg-accent hover:bg-accent/90 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          aria-label="クリスマスをツイッターで共有
+      "
         >
-          現在のクリぼっちの人数
-        </p>
-        <p
-          className={`text-3xl md:text-6xl ${NotoSansJPFont.className} font-normal`}
-        >
-          <span className={InterFont.className}>{activeConnections}</span>人
-        </p>
+          <BsTwitterX className="w-8 h-8 text-accent-foreground" />
+        </a>
       </div>
-    </div>
+      <div
+        className={`min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-6 md:px-0 ${InterFont.className}`}
+      >
+        <p className="text-3xl md:text-6xl w-full max-w-[400px] text-center md:text-left">
+          {timeLeft.days}:{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
+        </p>
+        <div className="hidden md:block border-l border h-36" />
+        <div className="w-full max-w-[400px] text-center md:text-left">
+          <p
+            className={`text-xl md:text-3xl ${NotoSansJPFont.className} font-light`}
+          >
+            現在のクリぼっちの人数
+          </p>
+          <p
+            className={`text-3xl md:text-6xl ${NotoSansJPFont.className} font-normal`}
+          >
+            <span className={InterFont.className}>{activeConnections}</span>人
+          </p>
+        </div>
+      </div>
     </>
   );
 }
