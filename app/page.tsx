@@ -67,7 +67,7 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => setActiveConnections(data.activeConnections));
 
-    // 30秒ごとにハートビート送信
+    // 5秒ごとにハートビート送信
     const heartbeatInterval = setInterval(() => {
       fetch("/api/heartbeat", {
         method: "POST",
@@ -77,7 +77,7 @@ export default function Home() {
         .then((res) => res.json())
         .then((data) => setActiveConnections(data.activeConnections))
         .catch(console.error);
-    }, 30000);
+    }, 5000);
 
     // ページ離脱時に切断
     const handleBeforeUnload = () => {
